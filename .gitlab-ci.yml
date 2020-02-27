@@ -1,0 +1,16 @@
+##Gitlab Pipeline for building the project 
+stages:
+  - build
+  - package
+  
+variables:
+#GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+build: 
+  image: gradle:6.1.1
+  before_script:
+    - chmod +x gradlew
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+  stage: build
+  script:
+    - gradle -version
